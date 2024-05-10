@@ -34,60 +34,6 @@ function display_all_categories_with_empty() {
     }
 }
 add_shortcode( 'danhsachchuyenmuc', 'display_all_categories_with_empty' );
-// Hàm hiển thị nội dung trang tùy chỉnh
-function custom_admin_page_content() {
-    global $wpdb;
-    $args = array(
-        'hide_empty' => false, // Hiển thị cả những chuyên mục không có bài viết
-    );
-    $categories = get_categories($args); // Lấy tất cả danh mục bài viết
-    ?>
-    <div class="wrap">
-        <h1>Hướng dẫn theme - LH 0911202404 (Truyện)</h1>
-        <h2>⭐ Sửa danh sách bài viết muốn hiển thị ở trang chủ</h2>
-<p>
-Lấy ID danh mục tương ứng để điền vào shortcode chuyên mục muốn hiển thị:<br>
-<img src="https://i.imgur.com/Lu4CJKr.png" width="700px"/>
-		</p>
-<p>
-	Ví dụ:  Shortcode [chuyenmuc-wide cat_id="12" offset="4" posts_per_page="3"] thì trong đó cat_id="12" là id của chuyên mục , offset="4" là số bài viết không muốn hiển thị ( tính thụt lùi ), posts_per_page="3" là số lượng bài muốn hiển thị
-		</p>
-        <table class="widefat">
-            <thead>
-                <tr>
-                    <th>Tên danh mục</th>
-                    <th>ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($categories as $category) : ?>
-                    <tr>
-                        <td><?php echo $category->name; ?></td> <!-- Hiển thị tên của danh mục -->
-                        <td><?php echo $category->cat_ID; ?></td> <!-- Hiển thị ID của danh mục -->
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <?php
-}
-
-
-
-function add_custom_admin_page() {
-    add_menu_page(
-        'Hướng dẫn Theme', // Tiêu đề của trang
-        'Hướng dẫn Theme', // Tên menu
-        'manage_options', // Quyền truy cập cần thiết để xem trang
-        'custom-admin-page', // Slug của trang
-        'custom_admin_page_content', // Hàm hiển thị nội dung trang
-        'dashicons-info', // Icon của trang (có thể sử dụng dashicons)
-        99 // Vị trí của menu trong trang quản trị (99 là cuối cùng)
-    );
-}
-
-add_action('admin_menu', 'add_custom_admin_page');
-
 
 
 function latest_posts_shortcode($atts) {
