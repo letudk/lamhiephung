@@ -554,3 +554,11 @@ function devvn_viewnumber_func($atts){
 add_shortcode('devvn_viewnumber', 'devvn_viewnumber_func');
 
 
+// custom footer 
+
+
+function custom_footer(){
+	get_template_part( 'template-parts/footer/footer-custom' );
+}
+
+add_action( 'custom_footer', 'custom_footer', 10 );
