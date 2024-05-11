@@ -20,6 +20,6 @@ global $flatsome_opt;
 </div>
  
 <?php wp_footer(); ?>
-
+ 
 </body>
 </html>
